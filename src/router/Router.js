@@ -14,6 +14,8 @@ const Router = () => {
             <Route path="/search/region" element={<SearchByRegion/>}/>
             <Route path="/search/subway" element={<SearchBySubway/>}/>
             <Route path="/search/name" element={<SearchByName/>}/>
+            <Route path="/kakao/auth/callback" element={<KakaoAuth/>}/>    
+            <Route path="/kakao/auth/logout" element={<KakaoLogout/>}/>
             {/*카카오 로그인, 로그아웃, 탈퇴, 마이페이지 route 추가 추가*/}
         </Routes>
 
