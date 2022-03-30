@@ -4,6 +4,9 @@ import MainPage from '../Component/MainPage';
 import SearchByName from '../Component/SearchByName';
 import SearchByRegion from '../Component/SearchByRegion';
 import SearchBySubway from '../Component/SearchBySubway';
+import KakaoAuth from '../Login/KakaoAuth';
+import KakaoLogout from '../Login/KakaoLogout';
+
 
 
 const Router = () => {
