@@ -1,4 +1,24 @@
+import { useState, Fragment } from "react";
+import LoginModal from '../Login/LoginModal'
+
+
 export default function MainPage() {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    const {Kakao} = window;
+    const kakaoLogoutClick = () => {
+        Kakao.Auth.authorize({
+            redirectUri: 'http://localhost:3000/kakao/auth/logout'
+        });
+    }
+
     return (
         <div id="main-wrapper">
             <div id="nav-wrapper">
@@ -6,7 +26,12 @@ export default function MainPage() {
                     <button>logo</button>
                 </div>
                 <div id="user-wrapper">
-                    <button>로그인</button>
+                    <Fragment>
+                        <button onClick={openModal}>로그인</button>
+                        <LoginModal open={modalOpen} close={closeModal} header="Modal heading">
+                        </LoginModal>
+                    </Fragment>
+                    <button onClick={kakaoLogoutClick}>로그아웃</button>
                     <button>마이페이지</button>
                 </div>
             </div>
