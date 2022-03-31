@@ -1,11 +1,12 @@
-import MainPage from './Component/MainPage';
+
+import Nav from './Component/Nav';
 import Router from './router/Router'
-import './Style/style.scss'
+
 
 export default function App() {
   return (
     <div className="App">
-      
+      <Nav/>
       <Router/>
     </div>
   );

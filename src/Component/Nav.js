@@ -1,10 +1,13 @@
-import { useState, Fragment } from "react";
-import LoginModal from '../Login/LoginModal'
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
+import LoginModal from "../Login/LoginModal";
+import '../Style/Nav.scss';
 
 
-export default function MainPage() {
+
+const Nav = () => {
+
     const [modalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {
@@ -29,11 +32,11 @@ export default function MainPage() {
         
     }
 
-    return (
-        <div id="main-wrapper">
+    return(
+        <div>
             <div id="nav-wrapper">
                 <div id="logo-wrapper">
-                    <button>logo</button>
+                    <Link to='/' style={{textDecoration: 'none', color: 'white'}}>logo</Link>
                 </div>
                 <div id="user-wrapper">
                     <Fragment>
@@ -45,22 +48,11 @@ export default function MainPage() {
                     <button>마이페이지</button>
                 </div>
             </div>
-            <div id="title-wrapper">
-                <h1>자기야 카페 어디갈래?</h1>
-            </div>
-            <div id="button-wrapper">
-                <div className="button-container">
-                    <Link to='/search/region'>
-                        <button type="button" className="btn btn-secondary">지역 검색</button>
-                    </Link>
-                </div>
-                <div className="button-container">
-                    <button type="button" className="btn btn-secondary">지하철 검색</button>
-                </div>
-                <div className="button-container">
-                    <button type="button" className="btn btn-secondary">이름 검색</button>
-                </div>
-            </div>
         </div>
     );
+
+
 }
+
+
+export default Nav;
