@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function KakaoAuth() {
     const code = new URL(window.location.href).searchParams.get("code");
+    console.log(code)
     const navigate = useNavigate();
     // http://localhost:3000/auth/callback?code={인가 코드}
     // const [userInfo, setUserInfo] = useState({});
