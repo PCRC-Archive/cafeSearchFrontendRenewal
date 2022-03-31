@@ -1,9 +1,10 @@
 
 import {Routes, Route} from 'react-router-dom';
-import MainPage from '../Component/MainPage';
-import SearchByName from '../Component/SearchByName';
-import SearchByRegion from '../Component/SearchByRegion';
-import SearchBySubway from '../Component/SearchBySubway';
+import MainPage from '../Component/page/MainPage';
+import SearchByName from '../Component/page/SearchByName';
+import SearchBySubway from '../Component/page/SearchBySubway';
+import SearchByRegion from '../Component/page/SearchByRegion';
+
 import KakaoAuth from '../Login/KakaoAuth';
 //import KakaoLogout from '../Login/KakaoLogout';
 
