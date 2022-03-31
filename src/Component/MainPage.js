@@ -1,7 +1,7 @@
 import { useState, Fragment } from "react";
 import LoginModal from '../Login/LoginModal'
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 
 
 export default function MainPage() {
@@ -15,10 +15,18 @@ export default function MainPage() {
     };
 
     const {Kakao} = window;
-    const kakaoLogoutClick = () => {
-        Kakao.Auth.authorize({
-            redirectUri: 'http://localhost:3000/kakao/auth/logout'
+    const logoutClick = async () => {
+
+        // 로그아웃 API 홏출
+        const requestLogout = await axios.post('http://localhost:8080/user/logout')
+        .then(()=>{
+            //store.dispatch({type: 'logout'});
+            alert('로그아웃');
+        })
+        .catch(()=>{
+            alert('로그아웃 실패');
         });
+        
     }
 
     return (
@@ -33,7 +41,7 @@ export default function MainPage() {
                         <LoginModal open={modalOpen} close={closeModal} header="Modal heading">
                         </LoginModal>
                     </Fragment>
-                    <button onClick={kakaoLogoutClick}>로그아웃</button>
+                    <button onClick={logoutClick}>로그아웃</button>
                     <button>마이페이지</button>
                 </div>
             </div>
