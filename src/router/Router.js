@@ -7,7 +7,7 @@ import SearchByRegion from '../Component/page/SearchByRegion';
 
 import KakaoAuth from '../Login/KakaoAuth';
 //import KakaoLogout from '../Login/KakaoLogout';
-
+import MyPage from '../Component/page/MyPage'
 
 
 const Router = () => {
@@ -18,7 +18,8 @@ const Router = () => {
             <Route path="/search/region" element={<SearchByRegion/>}/>
             <Route path="/search/subway" element={<SearchBySubway/>}/>
             <Route path="/search/name" element={<SearchByName/>}/>
-            <Route path="/kakao/auth/callback" element={<KakaoAuth/>}/>    
+            <Route path="/kakao/auth/callback" element={<KakaoAuth/>}/>
+            <Route path="/mypage/:id" element={<MyPage/>}/>
             {/*카카오 로그인, 로그아웃, 탈퇴, 마이페이지 route 추가 추가*/}
         </Routes>
 

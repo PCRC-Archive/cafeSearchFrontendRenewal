@@ -1,9 +1,10 @@
 import React from 'react';
 import './loginmodal.scss';
 
+
 export default function Modal (props) {
-  // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close } = props;
+    // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
+    const { open, close } = props;
 
     const outsideClick = (event) => {
         if(event.target.className !== 'openModal modal') {
@@ -15,7 +16,7 @@ export default function Modal (props) {
     const kakaoClick = () => {
         Kakao.Auth.authorize({
             redirectUri: 'http://localhost:3000/kakao/auth/callback'
-        });
+        });   
     }
 
   return (

@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginToggle } from "../redux/actions/toggle";
 
 
 export default function KakaoAuth() {
     const code = new URL(window.location.href).searchParams.get("code");
-    console.log(code)
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     // http://localhost:3000/auth/callback?code={인가 코드}
     // const [userInfo, setUserInfo] = useState({});
     const sendAuthCode = async () =>  {
@@ -17,6 +19,7 @@ export default function KakaoAuth() {
                 // data ok
                 let data = userData.data
                 console.log(data);
+                dispatch(loginToggle(data.success, data.user_id, data.nickname, data.profile_image_url, data.email, data.birthday, data.gender));
                 // test ok
                 //store.dispatch({type : 'login'});
                 //store.dispatch({type: 'setUserData', data});
@@ -30,7 +33,7 @@ export default function KakaoAuth() {
     useEffect(()=>{
         // push auth code to server
         sendAuthCode();
-        navigate('/');    
+        navigate('/');
     },[code]);
     return(
         <div>
