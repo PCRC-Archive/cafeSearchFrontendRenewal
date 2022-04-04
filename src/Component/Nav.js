@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LoginModal from "../Login/LoginModal";
 import '../Style/Nav.scss';
-
+import { useSelector } from "react-redux";
 
 
 const Nav = () => {
@@ -17,10 +17,15 @@ const Nav = () => {
         setModalOpen(false);
     };
 
+    const {user} = useSelector(state => ({
+        user: state.toggleReducer.user,
+    }));
+    
+    const link = "mypage/:" + user.user_id;
     const {Kakao} = window;
     const logoutClick = async () => {
 
-        // 로그아웃 API 홏출
+        // 로그아웃 API 호출
         const requestLogout = await axios.post('http://localhost:8080/user/logout')
         .then(()=>{
             //store.dispatch({type: 'logout'});
@@ -40,12 +45,18 @@ const Nav = () => {
                 </div>
                 <div id="user-wrapper">
                     <Fragment>
-                        <button onClick={openModal}>로그인</button>
+                        {user.login ? 
+                            <img src={user.profile_image_url} height={50} width={50} style={{borderRadius: 50}}/> : 
+                            <button onClick={openModal}>로그인</button> }
                         <LoginModal open={modalOpen} close={closeModal} header="Modal heading">
                         </LoginModal>
                     </Fragment>
-                    <button onClick={logoutClick}>로그아웃</button>
-                    <button>마이페이지</button>
+                    <button onClick={logoutClick}>
+                        Logout
+                    </button>
+                        <Link to={link}>
+                            <button>마이페이지</button>
+                        </Link>
                 </div>
             </div>
         </div>
