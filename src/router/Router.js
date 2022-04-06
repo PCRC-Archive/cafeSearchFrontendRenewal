@@ -19,7 +19,7 @@ const Router = () => {
             <Route path="/search/subway" element={<SearchBySubway/>}/>
             <Route path="/search/name" element={<SearchByName/>}/>
             <Route path="/kakao/auth/callback" element={<KakaoAuth/>}/>
-            <Route path="/mypage/:id" element={<MyPage/>}/>
+            <Route path="/mypage/:userid" element={<MyPage/>}/>
             {/*카카오 로그인, 로그아웃, 탈퇴, 마이페이지 route 추가 추가*/}
         </Routes>
 
